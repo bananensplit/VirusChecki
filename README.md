@@ -158,18 +158,18 @@ Jeremiasz Zrolka - jeremiasz.zrolka@gmail.com
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[repo]: https://github.com/bananensplit/project-name
+[repo]: https://github.com/bananensplit/VirusChecki
 
-[contributors-shield]: https://img.shields.io/github/contributors/bananensplit/project-name.svg
-[contributors-url]: https://github.com/bananensplit/project-name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/bananensplit/project-name.svg
-[forks-url]: https://github.com/bananensplit/project-name/network/members
-[stars-shield]: https://img.shields.io/github/stars/bananensplit/project-name.svg
-[stars-url]: https://github.com/bananensplit/project-name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/bananensplit/project-name.svg
-[issues-url]: https://github.com/bananensplit/project-name/issues
-[license-shield]: https://img.shields.io/github/license/bananensplit/project-name.svg
-[license-url]: https://github.com/bananensplit/project-name/blob/master/LICENSE.md
+[contributors-shield]: https://img.shields.io/github/contributors/bananensplit/VirusChecki.svg
+[contributors-url]: https://github.com/bananensplit/VirusChecki/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/bananensplit/VirusChecki.svg
+[forks-url]: https://github.com/bananensplit/VirusChecki/network/members
+[stars-shield]: https://img.shields.io/github/stars/bananensplit/VirusChecki.svg
+[stars-url]: https://github.com/bananensplit/VirusChecki/stargazers
+[issues-shield]: https://img.shields.io/github/issues/bananensplit/VirusChecki.svg
+[issues-url]: https://github.com/bananensplit/VirusChecki/issues
+[license-shield]: https://img.shields.io/github/license/bananensplit/VirusChecki.svg
+[license-url]: https://github.com/bananensplit/VirusChecki/blob/master/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/jeremiasz-zrolka-78431021b
 [twitter-url]: https://twitter.com/jeremiasz_z
