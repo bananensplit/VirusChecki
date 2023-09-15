@@ -1,6 +1,6 @@
 import logging
 import time
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import Future, ThreadPoolExecutor
 
 import requests
 
@@ -14,28 +14,37 @@ class VirusTotalHandler:
         self.threadpool = ThreadPoolExecutor(max_workers=1)
 
     async def scan_url(self, url: str) -> dict:
-        future = self.threadpool.submit(VirusTotalHandler.virus_total_job, url, self.logger, self.API_TOKEN)
-        return future.result()
-    
+        result_future = Future()
+        self.threadpool.submit(VirusTotalHandler.virus_total_job, url, result_future, self.logger, self.API_TOKEN)
+        self.logger.info(f"Queued attachment - URL: {url}")
+        return result_future.result()
+
     @staticmethod
-    def virus_total_job(url, logger: logging.Logger, API_KEY: str = None) -> None:
-        # scan the URL
+    def virus_total_job(url: str, future: Future, logger: logging.Logger, api_key: str = None) -> None:
+        # sending the scan request
+        logger.info(f"Scanning attachment - URL: {url}")
         scan_response = requests.post(
             "https://www.virustotal.com/api/v3/urls",
             headers={
-                "x-apikey": API_KEY,
+                "x-apikey": api_key,
                 "accept": "application/json",
                 "Content-Type": "application/x-www-form-urlencoded",
             },
             data={"url": url},
+            timeout=20,
         )
-        logger.debug(scan_response.json())
-        logger.info("Waiting for 25 seconds...")
+
+        logger.debug(f"Scan response - URL: {url}: \n{scan_response.json()}")
+        logger.info("Waiting for 25 seconds... (VirusTotal has a ratelimit)")
         time.sleep(25)
 
+        # fetching the report from the scan
+        logger.info(f"Fetching report for attachment - URL: {url}")
         analysis_fetch_link = scan_response.json()["data"]["links"]["self"]
-        report_response = requests.get(analysis_fetch_link, headers={"x-apikey": API_KEY})
-        logger.debug(report_response.json())
-        logger.info("Waiting for 25 seconds...")
+        report_response = requests.get(analysis_fetch_link, headers={"x-apikey": api_key}, timeout=20)
+        future.set_result(report_response.json())
+
+        logger.debug(f"Report response - URL: {url}: \n{report_response.json()}")
+        logger.info("Waiting for 25 seconds... (VirusTotal has a ratelimit)")
         time.sleep(25)
-        return report_response.json()
+        return True
