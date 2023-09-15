@@ -62,7 +62,6 @@ In the following the discord guild id will be reffered to as `YOUR GUILD_ID`.
 
 Replace the placeholders (`<...>`) with the actual values and execute the commands below to install this project using docker. The commands will create a container with the name `viruschecki` and run it in the background.
 
-```powershell
 Execute the following commands to install this project using docker:
 
 ```powershell
